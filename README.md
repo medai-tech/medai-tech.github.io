@@ -6,6 +6,7 @@
     <title>JK Hospital | Premium Medical Care</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <style>
         :root {
             --primary: #0056b3;
@@ -21,16 +22,18 @@
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-dark); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
         
         /* --- NAVIGATION --- */
         nav {
-            position: sticky; top: 0; background: rgba(255, 255, 255, 0.8);
+            position: sticky; top: 0; background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px); z-index: 1000; padding: 12px 6%;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
+
         .logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--primary); letter-spacing: -1px; text-decoration: none;}
         .logo span { color: var(--secondary); }
 
@@ -40,49 +43,51 @@
 
         .btn-booking { background: var(--primary); color: white !important; padding: 10px 24px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0, 86, 179, 0.2); }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+
         /* --- HERO SECTION --- */
         .hero {
-            padding: 60px 6%;
+            padding: 80px 6%;
             display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
             background: radial-gradient(circle at 100% 0%, #e0f2ff 0%, #fdfdfe 50%);
         }
-        .hero-content h1 { font-family: 'Outfit', sans-serif; font-size: 3.8rem; line-height: 1.1; margin-bottom: 20px; font-weight: 900; }
+        .hero-content h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 900; }
         .hero-content h1 mark { background: none; color: var(--primary); }
         .hero-content p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 500px; }
 
         .hero-visual { position: relative; }
-        .hero-img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+        .hero-img { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow); object-fit: cover; }
         
-        /* Floating Emergency Card */
         .emergency-float {
-            position: absolute; bottom: -20px; left: -20px;
-            background: white; padding: 20px; border-radius: var(--radius-sm);
+            position: absolute; bottom: 20px; left: -10px;
+            background: white; padding: 15px 25px; border-radius: var(--radius-sm);
             box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-left: 6px solid var(--accent);
             animation: float 3s ease-in-out infinite;
+            z-index: 10;
         }
 
         /* --- ABOUT SECTION --- */
-        .about-wrap { padding: 80px 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .about-wrap { padding: 80px 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
         .stat-box { background: white; padding: 25px; border-radius: var(--radius-sm); border: 1px solid #f1f5f9; text-align: center; box-shadow: var(--shadow); }
         .stat-box h3 { font-size: 2rem; color: var(--primary); margin-bottom: 5px; }
 
-        /* --- SERVICE MATRIX (COMPACT & VISIBLE) --- */
-        .services-section { padding: 60px 6%; background: #f8fafc; }
+        /* --- SERVICE MATRIX --- */
+        .services-section { padding: 80px 6%; background: #f8fafc; }
         .section-tag { display: inline-block; padding: 5px 15px; background: #e0e7ff; color: var(--primary); border-radius: 50px; font-weight: 800; font-size: 0.75rem; margin-bottom: 15px; }
         
-        .matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 40px; }
+        .matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
         .m-card {
             background: var(--surface); padding: 35px 25px; border-radius: var(--radius-lg);
-            border: 1px solid rgba(0,0,0,0.03); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: left; position: relative; overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03); transition: all 0.3s ease;
+            text-align: left;
         }
         .m-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0, 86, 179, 0.08); border-color: var(--secondary); }
-        .m-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; display: block; opacity: 0.9; }
+        .m-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; display: block; }
         .m-card h4 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; margin-bottom: 10px; }
         .m-card p { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* Specialist Card Styles */
         .m-card.urgent { border-top: 5px solid var(--accent); }
         .m-card.mama { border-top: 5px solid var(--mama); }
         .m-card.mama i { color: var(--mama); }
@@ -94,46 +99,63 @@
             display: grid; grid-template-columns: 1fr 1.2fr; overflow: hidden;
             box-shadow: 0 40px 80px rgba(0,0,0,0.2);
         }
-        .booking-info { padding: 60px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        .booking-form { padding: 60px; background: white; color: var(--text-dark); }
+        .booking-info { padding: 50px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .booking-form { padding: 50px; background: white; color: var(--text-dark); }
         
         .input-group { margin-bottom: 20px; }
         .input-group label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; color: var(--text-muted); }
         .input-group input, .input-group select {
             width: 100%; padding: 14px; border-radius: var(--radius-sm);
-            border: 2px solid #f1f5f9; outline: none; transition: 0.3s;
+            border: 2px solid #f1f5f9; outline: none; transition: 0.3s; font-family: inherit;
         }
         .input-group input:focus { border-color: var(--primary); }
         
         .btn-confirm {
             width: 100%; padding: 16px; background: var(--primary); color: white;
             border: none; border-radius: var(--radius-sm); font-weight: 800; cursor: pointer;
+            transition: 0.3s;
         }
+        .btn-confirm:hover { background: var(--secondary); transform: scale(1.02); }
 
         /* --- FOOTER --- */
-        footer { padding: 60px 6%; background: white; border-top: 1px solid #f1f5f9; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        footer { padding: 60px 6% 30px; background: white; border-top: 1px solid #f1f5f9; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-grid h4 { margin-bottom: 20px; font-family: 'Outfit', sans-serif; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
 
+        /* --- RESPONSIVENESS --- */
         @media (max-width: 968px) {
             .hero, .about-wrap, .booking-card { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .nav-links { display: none; }
+            .hero { padding-top: 40px; text-align: center; }
+            .hero-content p { margin: 0 auto 30px; }
+            .hero-content { order: 2; }
+            .hero-visual { order: 1; }
+            .about-wrap img { order: 1; }
+            .about-wrap div { order: 2; }
+            .emergency-float { left: 50%; transform: translateX(-50%); bottom: 10px; animation: none; }
+            
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: white; flex-direction: column; padding: 20px;
+                border-bottom: 1px solid #eee; box-shadow: var(--shadow);
+            }
+            .nav-links.active { display: flex; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav id="navbar">
         <a href="#" class="logo">JK<span>HOSPITAL</span></a>
-        <ul class="nav-links">
+        <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="nav-list">
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#updates">Updates</a></li>
             <li><a href="#appointment" class="btn-booking">Book Now</a></li>
         </ul>
     </nav>
@@ -143,9 +165,9 @@
             <span class="section-tag">24/7 MEDICAL EXCELLENCE</span>
             <h1>Modern Care, <br><mark>Close to You.</mark></h1>
             <p>JK Hospital Kigamboni (Tuamoyo) provides professional medical services using advanced technology and expert physicians.</p>
-            <div style="display: flex; gap: 15px;">
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                 <a href="#appointment" class="btn-booking" style="padding: 15px 35px;">Schedule Visit</a>
-                <a href="https://wa.me/255717739497" style="padding: 15px; font-weight: 700; color: var(--text-dark); text-decoration: none;"><i class="fab fa-whatsapp" style="color: #25d366;"></i> Live Chat</a>
+                <a href="https://wa.me/255717739497" target="_blank" style="padding: 15px; font-weight: 700; color: var(--text-dark); text-decoration: none;"><i class="fab fa-whatsapp" style="color: #25d366;"></i> Live Chat</a>
             </div>
         </div>
         <div class="hero-visual">
@@ -161,20 +183,20 @@
         <div>
             <span class="section-tag">OUR STORY</span>
             <h2 style="font-family: 'Outfit'; font-size: 2.5rem; margin-bottom: 20px;">Dedicated to Kigamboni.</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">Founded in August 2023, JK Hospital Co. Ltd operates as a premium private district-level hospital. We bridge the healthcare gap in Tuamoyo by providing reliable, specialized treatment for the whole family.</p>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Founded in August 2023, JK Hospital Co. Ltd operates as a premium private district-level hospital. We bridge the healthcare gap in Tuamoyo by providing reliable treatment for the whole family.</p>
             <div class="about-stats">
                 <div class="stat-box"><h3>24h</h3><p>Operation</p></div>
                 <div class="stat-box"><h3>10+</h3><p>Units</p></div>
             </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800" alt="Medical Team" style="width: 100%; border-radius: var(--radius-lg);">
+        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800" alt="Medical Team" class="hero-img">
     </section>
 
     <section class="services-section" id="services">
-        <center>
+        <div style="text-align: center;">
             <span class="section-tag">DEPARTMENTS</span>
             <h2 style="font-family: 'Outfit'; font-size: 2.5rem;">Clinical Excellence Matrix</h2>
-        </center>
+        </div>
 
         <div class="matrix">
             <div class="m-card urgent">
@@ -207,26 +229,6 @@
                 <h4>Pharmacy</h4>
                 <p>24-hour pharmaceutical access for all prescribed medicines.</p>
             </div>
-            <div class="m-card">
-                <i class="fas fa-scissors"></i>
-                <h4>Surgical Theater</h4>
-                <p>Major & minor surgical procedures by specialist surgeons.</p>
-            </div>
-            <div class="m-card">
-                <i class="fas fa-wave-square"></i>
-                <h4>Ultrasound</h4>
-                <p>High-resolution imaging for maternal and internal health.</p>
-            </div>
-            <div class="m-card">
-                <i class="fas fa-heartbeat"></i>
-                <h4>NCD Clinic</h4>
-                <p>Expert management for Diabetes and Hypertension.</p>
-            </div>
-            <div class="m-card">
-                <i class="fas fa-user-md"></i>
-                <h4>OPD Services</h4>
-                <p>General practitioner consultations for all age groups.</p>
-            </div>
         </div>
     </section>
 
@@ -241,14 +243,14 @@
                 </div>
             </div>
             <div class="booking-form">
-                <form>
+                <form id="appointmentForm">
                     <div class="input-group">
                         <label>FULL NAME</label>
-                        <input type="text" placeholder="e.g. John Doe" required>
+                        <input type="text" id="name" placeholder="e.g. John Doe" required>
                     </div>
                     <div class="input-group">
                         <label>SELECT SERVICE</label>
-                        <select>
+                        <select id="service">
                             <option>Mama na Mtoto / RCH</option>
                             <option>Dental Appointment</option>
                             <option>Maternity Consultation</option>
@@ -257,9 +259,9 @@
                     </div>
                     <div class="input-group">
                         <label>PHONE NUMBER</label>
-                        <input type="tel" placeholder="0xxxxxxxxx" required>
+                        <input type="tel" id="phone" placeholder="0xxxxxxxxx" required>
                     </div>
-                    <button class="btn-confirm">CONFIRM APPOINTMENT</button>
+                    <button type="submit" class="btn-confirm">CONFIRM APPOINTMENT</button>
                 </form>
             </div>
         </div>
@@ -273,23 +275,66 @@
             </div>
             <div>
                 <h4>Contact</h4>
-                <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem; margin-top: 15px;">
+                <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem;">
                     <li>Tuamoyo, Kigamboni</li>
                     <li>+255 717 739 497</li>
                 </ul>
             </div>
             <div>
                 <h4>Social</h4>
-                <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 1.2rem; color: var(--primary);">
+                <div style="display: flex; gap: 15px; font-size: 1.2rem; color: var(--primary);">
                     <i class="fab fa-facebook"></i>
                     <i class="fab fa-instagram"></i>
-                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/255717739497" style="color: inherit;"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
         <hr style="margin: 40px 0; border: none; border-top: 1px solid #f1f5f9;">
-        <center style="font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 JK Hospital Company Limited.</center>
+        <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 JK Hospital Company Limited.</p>
     </footer>
 
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+
+        // 2. Form Submission Handling
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+            const phone = document.getElementById('phone').value;
+
+            // Simulate sending a WhatsApp message or alert
+            const message = `Asante ${name}! Your request for ${service} has been received. We will contact you at ${phone} shortly.`;
+            
+            alert(message);
+            this.reset();
+        });
+
+        // 3. Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+                navbar.style.padding = "10px 6%";
+            } else {
+                navbar.style.boxShadow = "none";
+                navbar.style.padding = "12px 6%";
+            }
+        });
+    </script>
 </body>
 </html>
