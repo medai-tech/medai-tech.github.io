@@ -27,11 +27,10 @@
         
         /* --- NAVIGATION --- */
         nav {
-            position: sticky; top: 0; background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px); z-index: 1000; padding: 12px 6%;
+            position: sticky; top: 0; background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px); z-index: 1000; padding: 15px 6%;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
         }
 
         .logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--primary); letter-spacing: -1px; text-decoration: none;}
@@ -43,20 +42,19 @@
 
         .btn-booking { background: var(--primary); color: white !important; padding: 10px 24px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0, 86, 179, 0.2); }
 
-        /* Mobile Menu Toggle */
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 80px 6%;
+            padding: 60px 6%;
             display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
             background: radial-gradient(circle at 100% 0%, #e0f2ff 0%, #fdfdfe 50%);
         }
-        .hero-content h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 900; }
+        .hero-content h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 900; }
         .hero-content h1 mark { background: none; color: var(--primary); }
         .hero-content p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 500px; }
 
-        .hero-visual { position: relative; }
+        .hero-visual { position: relative; width: 100%; }
         .hero-img { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow); object-fit: cover; }
         
         .emergency-float {
@@ -67,84 +65,80 @@
             z-index: 10;
         }
 
-        /* --- ABOUT SECTION --- */
-        .about-wrap { padding: 80px 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
-        .stat-box { background: white; padding: 25px; border-radius: var(--radius-sm); border: 1px solid #f1f5f9; text-align: center; box-shadow: var(--shadow); }
-        .stat-box h3 { font-size: 2rem; color: var(--primary); margin-bottom: 5px; }
-
         /* --- SERVICE MATRIX --- */
-        .services-section { padding: 80px 6%; background: #f8fafc; }
+        .services-section { padding: 60px 6%; background: #f8fafc; }
         .section-tag { display: inline-block; padding: 5px 15px; background: #e0e7ff; color: var(--primary); border-radius: 50px; font-weight: 800; font-size: 0.75rem; margin-bottom: 15px; }
         
         .matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
         .m-card {
-            background: var(--surface); padding: 35px 25px; border-radius: var(--radius-lg);
-            border: 1px solid rgba(0,0,0,0.03); transition: all 0.3s ease;
-            text-align: left;
+            background: var(--surface); padding: 30px; border-radius: var(--radius-lg);
+            border: 1px solid rgba(0,0,0,0.03); transition: 0.3s;
         }
-        .m-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0, 86, 179, 0.08); border-color: var(--secondary); }
-        .m-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; display: block; }
-        .m-card h4 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; margin-bottom: 10px; }
-        .m-card p { font-size: 0.85rem; color: var(--text-muted); }
+        .m-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
+        .m-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; display: block; }
+        .m-card h4 { font-family: 'Outfit', sans-serif; margin-bottom: 10px; }
 
-        .m-card.urgent { border-top: 5px solid var(--accent); }
-        .m-card.mama { border-top: 5px solid var(--mama); }
-        .m-card.mama i { color: var(--mama); }
-
-        /* --- APPOINTMENT SECTION --- */
-        .booking-container { padding: 80px 6%; }
+        /* --- BOOKING CARD --- */
+        .booking-container { padding: 60px 6%; }
         .booking-card {
-            background: var(--text-dark); color: white; border-radius: var(--radius-lg);
-            display: grid; grid-template-columns: 1fr 1.2fr; overflow: hidden;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.2);
+            background: var(--text-dark); border-radius: var(--radius-lg);
+            display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
         }
-        .booking-info { padding: 50px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        .booking-form { padding: 50px; background: white; color: var(--text-dark); }
-        
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; color: var(--text-muted); }
-        .input-group input, .input-group select {
-            width: 100%; padding: 14px; border-radius: var(--radius-sm);
-            border: 2px solid #f1f5f9; outline: none; transition: 0.3s; font-family: inherit;
-        }
-        .input-group input:focus { border-color: var(--primary); }
-        
-        .btn-confirm {
-            width: 100%; padding: 16px; background: var(--primary); color: white;
-            border: none; border-radius: var(--radius-sm); font-weight: 800; cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn-confirm:hover { background: var(--secondary); transform: scale(1.02); }
+        .booking-info { padding: 40px; color: white; }
+        .booking-form { padding: 40px; background: white; }
 
-        /* --- FOOTER --- */
-        footer { padding: 60px 6% 30px; background: white; border-top: 1px solid #f1f5f9; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-grid h4 { margin-bottom: 20px; font-family: 'Outfit', sans-serif; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-weight: 700; font-size: 0.8rem; margin-bottom: 5px; color: var(--text-muted); }
+        .input-group input, .input-group select {
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;
+        }
+        .btn-confirm { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; }
+
+        /* --- RESPONSIVENESS FIXES --- */
+        @media (max-width: 968px) {
+            nav { padding: 15px 20px; }
+            .menu-toggle { display: block; }
+
+            /* Mobile Navigation Menu */
+            .nav-links {
+                display: none; /* Hidden by default */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                text-align: center;
+                border-bottom: 2px solid var(--primary);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex; /* Shown when toggled */
+            }
+
+            .hero, .booking-card { grid-template-columns: 1fr; text-align: center; }
+            .hero-content { order: 2; }
+            .hero-visual { order: 1; }
+            .hero-content p { margin: 0 auto 30px; }
+            
+            .emergency-float { 
+                position: relative; 
+                left: 0; 
+                bottom: 0; 
+                margin: 20px auto 0; 
+                width: fit-content;
+                animation: none;
+            }
+
+            .booking-info, .booking-form { padding: 30px 20px; }
+        }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
-        }
-
-        /* --- RESPONSIVENESS --- */
-        @media (max-width: 968px) {
-            .hero, .about-wrap, .booking-card { grid-template-columns: 1fr; }
-            .hero { padding-top: 40px; text-align: center; }
-            .hero-content p { margin: 0 auto 30px; }
-            .hero-content { order: 2; }
-            .hero-visual { order: 1; }
-            .about-wrap img { order: 1; }
-            .about-wrap div { order: 2; }
-            .emergency-float { left: 50%; transform: translateX(-50%); bottom: 10px; animation: none; }
-            
-            .menu-toggle { display: block; }
-            .nav-links {
-                display: none; position: absolute; top: 100%; left: 0; width: 100%;
-                background: white; flex-direction: column; padding: 20px;
-                border-bottom: 1px solid #eee; box-shadow: var(--shadow);
-            }
-            .nav-links.active { display: flex; }
         }
     </style>
 </head>
@@ -179,40 +173,16 @@
         </div>
     </section>
 
-    <section class="about-wrap" id="about">
-        <div>
-            <span class="section-tag">OUR STORY</span>
-            <h2 style="font-family: 'Outfit'; font-size: 2.5rem; margin-bottom: 20px;">Dedicated to Kigamboni.</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">Founded in August 2023, JK Hospital Co. Ltd operates as a premium private district-level hospital. We bridge the healthcare gap in Tuamoyo by providing reliable treatment for the whole family.</p>
-            <div class="about-stats">
-                <div class="stat-box"><h3>24h</h3><p>Operation</p></div>
-                <div class="stat-box"><h3>10+</h3><p>Units</p></div>
-            </div>
-        </div>
-        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800" alt="Medical Team" class="hero-img">
-    </section>
-
     <section class="services-section" id="services">
         <div style="text-align: center;">
             <span class="section-tag">DEPARTMENTS</span>
-            <h2 style="font-family: 'Outfit'; font-size: 2.5rem;">Clinical Excellence Matrix</h2>
+            <h2 style="font-family: 'Outfit'; font-size: 2.2rem;">Clinical Excellence Matrix</h2>
         </div>
-
         <div class="matrix">
-            <div class="m-card urgent">
-                <i class="fas fa-truck-medical" style="color: var(--accent);"></i>
-                <h4>Ambulance</h4>
-                <p>Swift 24/7 emergency response and inter-facility transfers.</p>
-            </div>
-            <div class="m-card mama">
-                <i class="fas fa-baby"></i>
+            <div class="m-card">
+                <i class="fas fa-baby" style="color:var(--mama)"></i>
                 <h4>Mama na Mtoto</h4>
                 <p>Specialized RCH clinic for pediatric care and vaccines.</p>
-            </div>
-            <div class="m-card mama">
-                <i class="fas fa-hospital-user"></i>
-                <h4>Maternity</h4>
-                <p>Private delivery suites with neonatal monitoring (Huduma ya Kujifungua).</p>
             </div>
             <div class="m-card">
                 <i class="fas fa-microscope"></i>
@@ -222,12 +192,7 @@
             <div class="m-card">
                 <i class="fas fa-tooth"></i>
                 <h4>Dental Unit</h4>
-                <p>Oral surgery, scaling, and routine dental maintenance.</p>
-            </div>
-            <div class="m-card">
-                <i class="fas fa-pills"></i>
-                <h4>Pharmacy</h4>
-                <p>24-hour pharmaceutical access for all prescribed medicines.</p>
+                <p>Oral surgery and routine dental maintenance.</p>
             </div>
         </div>
     </section>
@@ -235,27 +200,14 @@
     <section class="booking-container" id="appointment">
         <div class="booking-card">
             <div class="booking-info">
-                <h2 style="font-family: 'Outfit'; font-size: 2.5rem; margin-bottom: 20px;">Visit Our Specialists.</h2>
-                <p style="opacity: 0.8;">Secure your consultation slot today. We accept NHIF, Strategis, Jubilee, and all major insurance providers.</p>
-                <div style="margin-top: 40px;">
-                    <p><i class="fas fa-map-marker-alt"></i> Tuamoyo Area, Kigamboni, Dar</p>
-                    <p><i class="fas fa-clock"></i> Open 24/7</p>
-                </div>
+                <h2 style="font-family: 'Outfit'; font-size: 2rem; margin-bottom: 20px;">Book a Visit.</h2>
+                <p>Accepting NHIF and all major insurance providers at our Tuamoyo facility.</p>
             </div>
             <div class="booking-form">
                 <form id="appointmentForm">
                     <div class="input-group">
                         <label>FULL NAME</label>
-                        <input type="text" id="name" placeholder="e.g. John Doe" required>
-                    </div>
-                    <div class="input-group">
-                        <label>SELECT SERVICE</label>
-                        <select id="service">
-                            <option>Mama na Mtoto / RCH</option>
-                            <option>Dental Appointment</option>
-                            <option>Maternity Consultation</option>
-                            <option>General Checkup</option>
-                        </select>
+                        <input type="text" id="name" placeholder="Full Name" required>
                     </div>
                     <div class="input-group">
                         <label>PHONE NUMBER</label>
@@ -267,34 +219,8 @@
         </div>
     </section>
 
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <a href="#" class="logo">JK<span>HOSPITAL</span></a>
-                <p style="color: var(--text-muted); margin-top: 15px;">Redefining the standard of private healthcare in Kigamboni. Quality care you can count on.</p>
-            </div>
-            <div>
-                <h4>Contact</h4>
-                <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem;">
-                    <li>Tuamoyo, Kigamboni</li>
-                    <li>+255 717 739 497</li>
-                </ul>
-            </div>
-            <div>
-                <h4>Social</h4>
-                <div style="display: flex; gap: 15px; font-size: 1.2rem; color: var(--primary);">
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-instagram"></i>
-                    <a href="https://wa.me/255717739497" style="color: inherit;"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <hr style="margin: 40px 0; border: none; border-top: 1px solid #f1f5f9;">
-        <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 JK Hospital Company Limited.</p>
-    </footer>
-
     <script>
-        // 1. Mobile Menu Toggle
+        // MOBILE MENU TOGGLE
         const menuToggle = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
 
@@ -302,38 +228,18 @@
             navList.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
+        // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navList.classList.remove('active');
             });
         });
 
-        // 2. Form Submission Handling
+        // FORM ALERT
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const service = document.getElementById('service').value;
-            const phone = document.getElementById('phone').value;
-
-            // Simulate sending a WhatsApp message or alert
-            const message = `Asante ${name}! Your request for ${service} has been received. We will contact you at ${phone} shortly.`;
-            
-            alert(message);
+            alert("Asante! Your request has been sent. We will call you shortly.");
             this.reset();
-        });
-
-        // 3. Navbar background change on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
-                navbar.style.padding = "10px 6%";
-            } else {
-                navbar.style.boxShadow = "none";
-                navbar.style.padding = "12px 6%";
-            }
         });
     </script>
 </body>
